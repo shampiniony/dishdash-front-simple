@@ -1,0 +1,64 @@
+/* styles.css */
+
+/* General styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+#main {
+    text-align: center;
+    padding: 20px;
+}
+
+#headerImage img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 10px;
+}
+
+#slogan {
+    margin: 20px 0;
+}
+
+#slogan1, #slogan2 {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+/* Buttons */
+#buttons {
+    margin-top: 20px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    margin: 10px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    #slogan1, #slogan2 {
+        font-size: 1.2em;
+    }
+
+    button {
+        width: 100%;
+        margin: 10px 0;
+    }
+}

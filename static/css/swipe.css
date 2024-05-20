@@ -1,0 +1,167 @@
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f5f5f5;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.place-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 20px;
+    width: 300px;
+    transition: transform 0.3s ease;
+}
+
+.place-card h2, .place-card p {
+    margin: 10px;
+}
+
+.place-image {
+    width: 100%;
+    height: 200px; /* Задаем фиксированную высоту для карточки */
+    object-fit: cover; /* Обрезаем и масштабируем изображение */
+}
+
+.place-tag {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 10px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.like-btn, .dislike-btn {
+    background-color: transparent;
+    border: 2px solid #007BFF; /* Цвет кружка по умолчанию */
+    color: #007BFF; /* Цвет символа по умолчанию */
+    border-radius: 50%; /* Круглая форма */
+    padding: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Добавляем transition для цветов */
+    width: 50px; /* Задаем ширину кнопок */
+    height: 50px; /* Задаем высоту кнопок */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px; /* Уменьшаем отступы между кнопками */
+}
+
+.like-btn {
+    color: #28a745; /* Зеленый цвет для сердечка */
+    border-color: #28a745; /* Зеленый цвет кружка для сердечка */
+}
+
+.dislike-btn {
+    color: #dc3545; /* Красный цвет для крестика */
+    border-color: #dc3545; /* Красный цвет кружка для крестика */
+}
+
+.like-btn:hover {
+    background-color: #28a745; /* Убираем фоновый цвет при наведении */
+    color: #fff; /* Цвет символа при наведении */
+    border-color: #28a745; /* Зеленый цвет кружка при наведении */
+}
+
+.dislike-btn:hover {
+    background-color: #dc3545; /* Убираем фоновый цвет при наведении */
+    color: #fff; /* Цвет символа при наведении */
+    border-color: #dc3545; /* Красный цвет кружка при наведении */
+}
+
+
+/* Стили для модального окна */
+.match-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.5s ease;
+}
+
+.match-content {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Анимация для удаления карточек после нажатия на кнопки "Лайк" и "Дизлайк" */
+@keyframes swipeOutLeft {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes swipeOutRight {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+.swipe-out-left {
+    animation: swipeOutLeft 0.5s ease;
+}
+
+.swipe-out-right {
+    animation: swipeOutRight 0.5s ease;
+}
+
+.close-match-btn {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.close-match-btn:hover {
+    background-color: #0056b3;
+}

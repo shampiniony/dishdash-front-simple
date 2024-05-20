@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>DishDash</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/swipe.css">
+</head>
+<body>
+<div id="main">
+    <!-- Карточка заведения -->
+    <template id="placeCardTemplate">
+        <div class="place-card">
+            <h2 class="place-name">Название Заведения</h2>
+            <img src="https://placehold.co/300x200" alt="Изображение заведения" class="place-image">
+            <div class="place-tag">Кафе</div>
+            <p class="place-description">Краткое описание заведения. Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit.</p>
+        </div>
+        <div class="buttons">
+            <button class="dislike-btn">&#10006;</button> <!-- Символ крестика -->
+            <button class="like-btn">&#x2665;</button> <!-- Символ сердечка -->
+        </div>
+    </template>
+    <!-- Здесь будет отображаться карточка -->
+    <div id="cardContainer"></div>
+</div>
+
+<!-- Модальное окно для матчей -->
+<template id="matchTemplate">
+    <div class="match-modal">
+        <div class="match-content">
+            <h2>У вас match!</h2>
+            <div class="place-card">
+                <h2 class="place-name">Название Заведения</h2>
+                <img src="https://placehold.co/300x200" alt="Изображение заведения" class="place-image">
+                <div class="place-tag">Кафе</div>
+                <p class="place-description">Краткое описание заведения. Lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit.</p>
+            </div>
+            <button class="close-match-btn">Закрыть</button>
+        </div>
+    </div>
+</template>
+<script src="js/socket.io.min.js"></script>
+<script src="js/swipe.js"></script>
+</body>
+</html>
