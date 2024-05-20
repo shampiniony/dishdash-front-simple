@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  frontend-go:
+    build:
+      context: .  # The directory containing your Dockerfile
+      dockerfile: Dockerfile  # Optional if the file is named 'Dockerfile'
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./static:/static  # Maps the 'static' directory from the host to '/app/static' in the container
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.frontend-go.entrypoints=https"
+      - "traefik.http.routers.frontend-go.rule=Host(`dishdash.ru`) && PathPrefix(`/`)"
+      - "traefik.http.services.frontend-go.loadbalancer.server.port=9000"
+      - "traefik.http.routers.frontend-go.priority=1"
+      - "traefik.http.routers.frontend-go.tls.certresolver=le"
+    networks:
+      - proxynet
+
+networks:
+  proxynet:
+    name: proxynet
+    external: true
+
