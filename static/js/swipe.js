@@ -1,9 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const socket = io("https://dishdash.ru", {transports: ["websocket"]});
+    const apiHost = "https://dishdash.ru"
+
+    const socket = io(apiHost, {transports: ["websocket"]});
+    const lobbyID = parseInt(window.location.href.substring(window.location.href.lastIndexOf('/') + 1))
 
     // Отправка события joinLobby при подключении
     socket.on('connect', function () {
-        socket.emit('joinLobby', JSON.stringify({lobbyID: 1}));
+        socket.emit('joinLobby', JSON.stringify({lobbyID: lobbyID}));
     });
 
     // Обработчик события получения карточки
@@ -22,7 +25,6 @@ document.addEventListener("DOMContentLoaded", function () {
     function fillCardData(cardElement, card) {
         cardElement.querySelector('.place-name').textContent = card.title;
         cardElement.querySelector('.place-image').src = card.image;
-        cardElement.querySelector('.place-tag').textContent = card.type;
         cardElement.querySelector('.place-description').textContent = card.shortDescription;
     }
 
@@ -41,13 +43,11 @@ document.addEventListener("DOMContentLoaded", function () {
         likeButton.addEventListener('click', function () {
             sendSwipe('LIKE');
             cardContainer.innerHTML = '';
-            clone.querySelector('.place-card').classList.add('swipe-out-right');
         });
 
         dislikeButton.addEventListener('click', function () {
             sendSwipe('DISLIKE');
             cardContainer.innerHTML = '';
-            clone.querySelector('.place-card').classList.add('swipe-out-left');
         });
 
         cardContainer.innerHTML = '';
@@ -77,4 +77,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
         document.body.appendChild(clone);
     }
+
+    const copyLinkBtn = document.getElementById("copyLinkBtn");
+    copyLinkBtn.addEventListener("click", function () {
+        const currentURL = window.location.href;
+        navigator.clipboard.writeText(currentURL).then(function () {
+            alert("Ссылка скопирована в буфер обмена: " + currentURL);
+        }, function (err) {
+            console.error("Не удалось скопировать ссылку: ", err);
+        });
+    });
 });

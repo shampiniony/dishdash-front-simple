@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     height: 100vh;
     margin: 0;
     background-color: #f5f5f5;
@@ -11,14 +11,16 @@ body {
 
 #main {
     display: flex;
+    margin-top: 2em;
     flex-direction: column;
     align-items: center;
+    position: relative; /* Добавляем позиционирование для кнопки копирования ссылки */
 }
 
 .place-card {
     background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     margin: 20px;
     width: 300px;
@@ -31,17 +33,8 @@ body {
 
 .place-image {
     width: 100%;
-    height: 200px; /* Задаем фиксированную высоту для карточки */
-    object-fit: cover; /* Обрезаем и масштабируем изображение */
-}
-
-.place-tag {
-    background-color: #007BFF;
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 5px;
-    display: inline-block;
-    margin: 10px;
+    height: 300px;
+    object-fit: cover;
 }
 
 .buttons {
@@ -52,43 +45,42 @@ body {
 
 .like-btn, .dislike-btn {
     background-color: transparent;
-    border: 2px solid #007BFF; /* Цвет кружка по умолчанию */
-    color: #007BFF; /* Цвет символа по умолчанию */
-    border-radius: 50%; /* Круглая форма */
+    border: 2px solid #007BFF;
+    color: #007BFF;
+    border-radius: 50%;
     padding: 10px;
-    font-size: 24px;
+    font-size: 28px;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Добавляем transition для цветов */
-    width: 50px; /* Задаем ширину кнопок */
-    height: 50px; /* Задаем высоту кнопок */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    width: 60px;
+    height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 5px; /* Уменьшаем отступы между кнопками */
+    margin: 0 5px;
 }
 
 .like-btn {
-    color: #28a745; /* Зеленый цвет для сердечка */
-    border-color: #28a745; /* Зеленый цвет кружка для сердечка */
+    color: #28a745;
+    border-color: #28a745;
 }
 
 .dislike-btn {
-    color: #dc3545; /* Красный цвет для крестика */
-    border-color: #dc3545; /* Красный цвет кружка для крестика */
+    color: #dc3545;
+    border-color: #dc3545;
 }
 
 .like-btn:hover {
-    background-color: #28a745; /* Убираем фоновый цвет при наведении */
-    color: #fff; /* Цвет символа при наведении */
-    border-color: #28a745; /* Зеленый цвет кружка при наведении */
+    background-color: #28a745;
+    color: #fff;
+    border-color: #28a745;
 }
 
 .dislike-btn:hover {
-    background-color: #dc3545; /* Убираем фоновый цвет при наведении */
-    color: #fff; /* Цвет символа при наведении */
-    border-color: #dc3545; /* Красный цвет кружка при наведении */
+    background-color: #dc3545;
+    color: #fff;
+    border-color: #dc3545;
 }
-
 
 /* Стили для модального окна */
 .match-modal {
@@ -107,7 +99,7 @@ body {
 .match-content {
     background-color: #fff;
     border-radius: 10px;
-    padding: 20px;
+    padding: 30px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
@@ -124,22 +116,22 @@ body {
 /* Анимация для удаления карточек после нажатия на кнопки "Лайк" и "Дизлайк" */
 @keyframes swipeOutLeft {
     0% {
-        transform: translateX(0);
+        transform: translateX(0) rotate(-5deg);
         opacity: 1;
     }
     100% {
-        transform: translateX(-100%);
+        transform: translateX(-100%) rotate(-10deg);
         opacity: 0;
     }
 }
 
 @keyframes swipeOutRight {
     0% {
-        transform: translateX(0);
+        transform: translateX(0) rotate(5deg);
         opacity: 1;
     }
     100% {
-        transform: translateX(100%);
+        transform: translateX(100%) rotate(10deg);
         opacity: 0;
     }
 }
@@ -163,5 +155,22 @@ body {
 }
 
 .close-match-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Стили для кнопки копирования ссылки */
+#copyLinkBtn {
+    position: absolute;
+    bottom: -40px; /* Располагаем кнопку копирования ссылки снизу под карточкой, но не в ней */
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#copyLinkBtn:hover {
     background-color: #0056b3;
 }
